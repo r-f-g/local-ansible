@@ -1,0 +1,14 @@
+---
+- name: "Uninstall balast app"
+  become: yes
+  swupd:
+    state: absent
+    name: "{{ item }}"
+  with_items:
+    - emacs-x11
+    - evolution
+    - geary
+    - gnome-calendar
+    - gnome-todo
+    - gvim
+
