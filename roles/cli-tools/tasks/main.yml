@@ -27,9 +27,8 @@
     repo: "git://github.com/robbyrussell/oh-my-zsh.git"
     dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh"
 
-- name: Create new zs config from the template in the oh-my-zsh repo
+- name: Create new zsh config from the template in the oh-my-zsh repo
   copy:
-    remote_src: yes
-    src: "/home/{{ ansible_ssh_user }}/.oh-my-zsh/templates/zshrc.zsh-template"
+    src: ../files/zsh.conf
     dest: "/home/{{ ansible_ssh_user }}/.zshrc"
-
+    backup: yes

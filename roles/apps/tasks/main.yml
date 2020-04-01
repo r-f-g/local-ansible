@@ -46,7 +46,7 @@
     - com.sublimetext.three
     - io.github.liberodark.OpenDrive
     - org.keepassxc.KeePassXC
-    - org.mozilla.Thundeerbird
+    - org.mozilla.Thunderbird
     - org.telegram.desktop
 
 - name: Download script to install JetBrains Toolbox

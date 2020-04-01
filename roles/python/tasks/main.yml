@@ -1,0 +1,13 @@
+---
+- name: Download pyenv
+  become: no
+  git: 
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "/home/{{ ansible_ssh_user }}/.pyenv"
+
+- name: Install pipenv
+  become: no
+  pip:
+    name: pipenv
+    extra_args: --user
+
