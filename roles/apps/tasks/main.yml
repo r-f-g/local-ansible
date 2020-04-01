@@ -1,0 +1,54 @@
+---
+- name: "Install Docker"
+  swupd:
+    state: present
+    name: containers-basic
+
+- name: "Enable Docker in systemctl"
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+  
+- name: "Add docker group"
+  group:
+    state: present
+    name: docker
+
+- name: "Add user to docker group"
+  user:
+    state: present
+    name: "{{ ansible_ssh_user }}"
+    groups: 
+      - docker
+    append: yes
+
+- name: "Install all apps with swupd"
+  swupd:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - docker-compose
+    - gparted
+
+- name: "Install all apps with flatpak"
+  become: no
+  flatpak:
+    state: present
+    method: user
+    name: "{{ item }}"
+    remote: flathub
+  with_items:
+    - com.dropbox.Client
+    - com.slack.Slack
+    - com.sublimetext.three
+    - org.telegram.desktop
+
+- name: "Download script to install JetBrains Toolbox"
+  git:
+    repo: https://github.com/nagygergo/jetbrains-toolbox-install.git
+    dest: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox"
+
+- name: "Install JetBrains Toolbox"
+  shell: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox/jetbrains-toolbox.sh"
+

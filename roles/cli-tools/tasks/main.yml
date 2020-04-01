@@ -4,6 +4,7 @@
     state: present
     name: "{{ item }}"
   with_items:
+    - clr-network-troubleshooter
     - curl
     - git
     - htop
