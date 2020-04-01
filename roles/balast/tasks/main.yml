@@ -1,5 +1,5 @@
 ---
-- name: "Uninstall balast app"
+- name: Uninstall balast app
   swupd:
     state: absent
     name: "{{ item }}"

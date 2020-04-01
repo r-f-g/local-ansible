@@ -1,29 +1,30 @@
 ---
-- name: "Install Docker"
+- name: Install Docker
   swupd:
     state: present
     name: containers-basic
 
-- name: "Enable Docker in systemctl"
+- name: Enable Docker in systemctl
   systemd:
     name: docker
     enabled: yes
     state: started
   
-- name: "Add docker group"
+- name: Add docker group
   group:
     state: present
     name: docker
 
-- name: "Add user to docker group"
+- name: Add user to docker group
   user:
     state: present
     name: "{{ ansible_ssh_user }}"
-    groups: 
-      - docker
+    group: "{{ ansible_ssh_user }}"
+    groups: docker
     append: yes
+  become: yes
 
-- name: "Install all apps with swupd"
+- name: Install all apps with swupd
   swupd:
     state: present
     name: "{{ item }}"
@@ -31,7 +32,7 @@
     - docker-compose
     - gparted
 
-- name: "Install all apps with flatpak"
+- name: Install all apps with flatpak
   become: no
   flatpak:
     state: present
@@ -42,13 +43,13 @@
     - com.dropbox.Client
     - com.slack.Slack
     - com.sublimetext.three
+    - org.keepassxc.KeePassXC
     - org.telegram.desktop
 
-- name: "Download script to install JetBrains Toolbox"
+- name: Download script to install JetBrains Toolbox
   git:
     repo: https://github.com/nagygergo/jetbrains-toolbox-install.git
     dest: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox"
-
-- name: "Install JetBrains Toolbox"
-  shell: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox/jetbrains-toolbox.sh"
+  notify:
+    - Install JetBrains Toolbox
 
