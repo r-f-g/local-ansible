@@ -1,6 +1,5 @@
 ---
 - name: "Uninstall balast app"
-  become: yes
   swupd:
     state: absent
     name: "{{ item }}"

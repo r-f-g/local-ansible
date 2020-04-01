@@ -2,6 +2,8 @@
 - name: "Configure ClearLinux machine"
   hosts: localhost
   connection: local
+  become: yes
+  become_method: sudo
   roles:
     - balast
     - cli-tools

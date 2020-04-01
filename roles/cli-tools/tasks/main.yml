@@ -1,6 +1,5 @@
 ---
 - name: "Install base command lines tools"
-  become: yes
   swupd:
     state: present
     name: "{{ item }}"
@@ -13,7 +12,6 @@
     - wget
 
 - name: "Install zsh"
-  become: yes
   swupd:
     state: present
     name: zsh
@@ -21,7 +19,7 @@
 - name: "Set zsh as defualt"
   user:
     name: "{{ ansible_ssh_user }}"
-    shell: "/usr/bin/zsh"
+    shell: /usr/bin/zsh
 
 - name: "Clone oh-my-zsh repo"
   git:
