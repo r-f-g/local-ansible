@@ -31,6 +31,7 @@
   with_items:
     - docker-compose
     - gparted
+    - lib-opengl
 
 - name: Install all apps with flatpak
   become: no
@@ -43,10 +44,13 @@
     - com.dropbox.Client
     - com.slack.Slack
     - com.sublimetext.three
+    - io.github.liberodark.OpenDrive
     - org.keepassxc.KeePassXC
+    - org.mozilla.Thundeerbird
     - org.telegram.desktop
 
 - name: Download script to install JetBrains Toolbox
+  become: no
   git:
     repo: https://github.com/nagygergo/jetbrains-toolbox-install.git
     dest: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox"
