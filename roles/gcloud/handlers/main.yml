@@ -1,0 +1,9 @@
+---
+- name: Install Google Cloud SDK
+  become: no
+  shell: "/home/{{ ansible_ssh_user }}/.gcloud/installer.sh --disable-prompts --install-dir=/home/{{ ansible_ssh_user }}/.gcloud"
+
+- name: Authenticate Docker
+  become: no
+  shell: "/home/{{ ansible_ssh_user }}/.gcloud/google-cloud-sdk/bin/gcloud auth configure-docker"
+

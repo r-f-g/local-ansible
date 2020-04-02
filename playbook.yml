@@ -8,5 +8,6 @@
     - apps
     - balast
     - cli-tools
+    - gcloud
     - python
 

@@ -1,0 +1,18 @@
+---
+- name: Create Google Cloud SDK directory
+  become: no
+  file:
+    path: "/home/{{ ansible_ssh_user }}/.gcloud/"
+    state: directory
+    mode: "0755"
+
+- name: Download Google Cloud SDK
+  become: no
+  get_url: 
+    url: https://sdk.cloud.google.com
+    dest: "/home/{{ ansible_ssh_user }}/.gcloud/installer.sh"
+    mode: "755"
+  notify:
+    - Install Google Cloud SDK
+    - Authenticate Docker
+
