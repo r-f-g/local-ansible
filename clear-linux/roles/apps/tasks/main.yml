@@ -32,6 +32,7 @@
     - docker-compose
     - gparted
     - lib-opengl
+    - vlc
 
 - name: Install all apps with flatpak
   become: no
