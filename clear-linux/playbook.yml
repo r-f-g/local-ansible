@@ -10,4 +10,5 @@
     - cli-tools
     - gcloud
     - python
+    - settings
 
