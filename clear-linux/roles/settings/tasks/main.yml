@@ -1,0 +1,12 @@
+---
+- name: Install psutil
+  pip:
+    name: psutil
+
+- name: Set up input languages
+  become: no
+  dconf:
+    state: present
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'sk+qwerty')]"
+
