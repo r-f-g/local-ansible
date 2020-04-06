@@ -30,6 +30,7 @@
     name: "{{ item }}"
   with_items:
     - docker-compose
+    - gnome-boxes
     - gparted
     - lib-opengl
     - vlc
