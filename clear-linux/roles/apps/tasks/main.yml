@@ -35,6 +35,21 @@
     - lib-opengl
     - vlc
 
+- name: Enable libvirtd in systemctl
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
+
+- name: Add user to kvm group
+  user:
+    state: present
+    name: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    groups: kvm
+    append: yes
+  become: yes
+
 - name: Install all apps with flatpak
   become: no
   flatpak:
