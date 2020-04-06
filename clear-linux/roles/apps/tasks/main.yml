@@ -33,6 +33,7 @@
     - gnome-boxes
     - gparted
     - lib-opengl
+    - virt-manager
     - vlc
 
 - name: Enable libvirtd in systemctl
