@@ -28,6 +28,7 @@
     dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh"
 
 - name: Create new zsh config from the template in the oh-my-zsh repo
+  become: no
   copy:
     src: ../files/zsh.conf
     dest: "/home/{{ ansible_ssh_user }}/.zshrc"
