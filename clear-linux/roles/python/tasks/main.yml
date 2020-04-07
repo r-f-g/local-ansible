@@ -1,4 +1,16 @@
 ---
+- name: Install pyenv requirements
+  swupd:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - devpkg-bzip2
+    - devpkg-libffi
+    - devpkg-ncurses
+    - devpkg-openssl
+    - devpkg-readline
+    - devpkg-sqlite-autoconf
+
 - name: Download pyenv
   become: no
   git: 
