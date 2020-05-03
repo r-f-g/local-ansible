@@ -1,0 +1,30 @@
+---
+- name: Configure locale
+  copy:
+    src: locale
+    dest: /etc/default/locale
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Delete automatic updaters # Can't be helped..
+  apt:
+    name:
+      - gnome-software
+      - unattended-upgrades
+    state: absent
+
+- name: Delete other Ubuntu bullshit
+  apt:
+    name:
+      - ubuntu-web-launchers # some amazon bullshit
+      - ubuntu-report # telemetry
+    state: absent
+
+- name: Configure APT auto updates
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    mode: "0644"
+    owner: root
+    group: root

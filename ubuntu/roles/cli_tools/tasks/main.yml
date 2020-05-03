@@ -1,0 +1,6 @@
+---
+- name: CLI tools
+  import_tasks: tools.yml
+
+- name: ZSH
+  import_tasks: zsh.yml

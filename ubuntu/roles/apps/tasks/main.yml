@@ -1,0 +1,9 @@
+---
+- name: Docker
+  import_tasks: docker.yml
+
+- name: Virtualization
+  import_tasks: virtualization.yml
+
+- name: Cloud tools
+  import_tasks: cloud_tools.yml

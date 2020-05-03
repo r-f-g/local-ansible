@@ -1,0 +1,24 @@
+---
+- name: Install zsh
+  apt:
+    name:
+      - zsh
+    state: present
+    update_cache: yes
+
+- name: Set zsh as defualt
+  user:
+    name: "{{ ansible_ssh_user }}"
+    shell: /bin/zsh
+
+- name: Clone oh-my-zsh repo
+  git:
+    repo: "git://github.com/robbyrussell/oh-my-zsh.git"
+    dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh"
+
+- name: Create new zsh config from the template in the oh-my-zsh repo
+  become: no
+  copy:
+    src: zsh.conf
+    dest: "/home/{{ ansible_ssh_user }}/.zshrc"
+    backup: yes

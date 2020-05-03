@@ -1,0 +1,11 @@
+---
+- hosts: local_pc
+  become: yes
+  become_method: sudo
+  roles:
+    - prep # Install required packages.
+    - updated_system # Update the whole system before installing anything else
+    - apps
+    - python
+    - cli_tools
+    - ubuntu_settings

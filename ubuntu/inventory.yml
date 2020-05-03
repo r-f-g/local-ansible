@@ -1,0 +1,5 @@
+---
+local_pc:
+  hosts:
+    localhost:
+      ansible_python_interpreter: /usr/bin/python3

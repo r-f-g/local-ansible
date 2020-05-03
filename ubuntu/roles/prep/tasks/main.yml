@@ -1,0 +1,14 @@
+---
+- name: Install aptitude
+  apt:
+    name: aptitude
+    state: present
+    update_cache: yes
+    force_apt_get: yes
+
+- name: Install required packages for this playbook.
+  apt:
+    name:
+      - curl
+    state: present
+    update_cache: yes

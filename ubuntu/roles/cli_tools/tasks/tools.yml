@@ -1,0 +1,19 @@
+---
+- name: Install CLI utilities for better life
+  apt:
+    name:
+      - htop
+      - mc
+      - vim
+      - glances
+      - tmux
+      - screen
+      - nmap
+      - p7zip-full
+      - aria2
+      - wget2
+      - curl
+      - wget
+      - clang
+      - cmake
+      - tree
