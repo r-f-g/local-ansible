@@ -6,7 +6,7 @@
   become_method: sudo
   roles:
     - apps
-    - balast
+    - ballast
     - cli-tools
     - gcloud
     - python
