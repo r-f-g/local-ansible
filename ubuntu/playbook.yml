@@ -9,3 +9,11 @@
     - python
     - cli_tools
     - ubuntu_settings
+
+- hosts: local_pc
+  vars:
+    jetbrains_toolbox_version: latest
+  become: no
+  roles:
+    - user_python
+    - ubuntu_user_settings

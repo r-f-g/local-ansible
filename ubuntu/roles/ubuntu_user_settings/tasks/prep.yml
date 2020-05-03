@@ -1,0 +1,6 @@
+---
+- name: Install tools to make Ubuntu feel better
+  apt:
+    name:
+      - dconf-editor
+      - gnome-tweak-tool

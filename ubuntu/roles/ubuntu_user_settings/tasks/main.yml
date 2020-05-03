@@ -1,0 +1,6 @@
+---
+- name: Install requirements
+  import_tasks: prep.yml
+
+- name: User settings
+  import_tasks: settings.yml

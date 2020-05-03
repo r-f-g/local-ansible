@@ -1,0 +1,76 @@
+---
+- name: Disable Ubuntu automatic update popups
+  dconf:
+    key: "/com/ubuntu/update-notifier/no-show-notifications"
+    value: "false"
+    state: present
+
+- name: Hide trash icon from Desktop
+  dconf:
+    key: "/org/gnome/shell/extensions/desktop-icons/show-trash"
+    value: "false"
+    state: present
+
+- name: Set Docked app list
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'thunderbird.desktop']"
+
+- name: Enable F10 in Gnome Terminal
+  dconf:
+    key: "/org/gnome/terminal/legacy/menu-accelerator-enabled"
+    value: "false"
+    state: "present"
+
+- name: Keyboard Layouts (us and sk-qwerty)
+  dconf:
+    key: "/org/gnome/desktop/input-sources/mru-sources"
+    value: "[('xkb', 'us'), ('xkb', 'sk+qwerty')]"
+    state: "present"
+
+- name: Keyboard Layouts (us and sk-qwerty) variant 2
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'sk+qwerty')]"
+    state: "present"
+
+- name: Touchpad click type
+  dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/click-method"
+    value: "'fingers'"
+    state: "present"
+
+- name: "[Privacy] Don't send crash reports automatically without permission"
+  dconf:
+    key: "/org/gnome/desktop/privacy/report-technical-problems"
+    value: "false"
+    state: "present"
+
+- name: "[Privacy] Don't send telemetry without permission"
+  dconf:
+    key: "/org/gnome/desktop/privacy/send-software-usage-stats"
+    value: "false"
+    state: "present"
+
+- name: "[Privacy] Don't keep track of what I see"
+  dconf:
+    key: "/org/gnome/desktop/privacy/remember-recent-files"
+    value: "false"
+    state: "present"
+
+- name: "[Privacy] Don't keep track of what I do"
+  dconf:
+    key: "/org/gnome/desktop/privacy/remember-app-usage"
+    value: "false"
+    state: "present"
+
+- name: "[Privacy] Hide identity sounds good"
+  dconf:
+    key: "/org/gnome/desktop/privacy/hide-identity"
+    value: "true"
+    state: "present"
+
+- name: Remove examples.desktop (wtf?)
+  file:
+    path: ~/examples.desktop
+    state: absent
