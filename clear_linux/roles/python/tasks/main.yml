@@ -22,4 +22,3 @@
   pip:
     name: pipenv
     extra_args: --user
-

@@ -7,7 +7,7 @@
   roles:
     - apps
     - ballast
-    - cli-tools
+    - cli_tools
     - gcloud
     - python
     - settings
