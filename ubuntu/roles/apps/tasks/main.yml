@@ -7,3 +7,19 @@
 
 - name: Cloud tools
   import_tasks: cloud_tools.yml
+
+- name: Preparation
+  import_tasks: prep.yml
+
+- name: Communication
+  import_tasks: communication.yml
+
+- name: Cloud storage
+  import_tasks: storage.yml
+
+- name: IDLE
+  import_tasks: idle.yml
+
+- name: Others
+  import_tasks: others.yml
+

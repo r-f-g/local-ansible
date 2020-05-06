@@ -1,0 +1,12 @@
+---
+- name: Install OpenDrive and Dropbox
+  become: no
+  flatpak:
+    state: present
+    method: user
+    name: "{{ item }}"
+    remote: flathub
+  loop:
+    - com.dropbox.Client
+    - io.github.liberodark.OpenDrive
+

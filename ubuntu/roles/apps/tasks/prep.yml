@@ -1,0 +1,15 @@
+---
+- name: install Flatpak
+  apt:
+    name: flatpak
+    state: present
+    update_cache: yes
+
+- name: add flathub.org
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: user
+  become: no
+

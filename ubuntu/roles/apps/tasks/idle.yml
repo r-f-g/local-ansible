@@ -1,0 +1,11 @@
+---
+- name: Install all apps with flatpak
+  become: no
+  flatpak:
+    state: present
+    method: user
+    name: "{{ item }}"
+    remote: flathub
+  loop:
+    - com.sublimetext.three
+
