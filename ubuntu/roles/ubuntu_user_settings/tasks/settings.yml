@@ -11,11 +11,6 @@
     value: "false"
     state: present
 
-- name: Set Docked app list
-  dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    value: "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'thunderbird.desktop']"
-
 - name: Enable F10 in Gnome Terminal
   dconf:
     key: "/org/gnome/terminal/legacy/menu-accelerator-enabled"
