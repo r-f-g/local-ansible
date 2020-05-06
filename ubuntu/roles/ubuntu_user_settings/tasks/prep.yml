@@ -4,3 +4,5 @@
     name:
       - dconf-editor
       - gnome-tweak-tool
+  become: yes
+
