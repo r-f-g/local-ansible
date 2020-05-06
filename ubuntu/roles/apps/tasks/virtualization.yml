@@ -3,6 +3,8 @@
   apt:
     name:
       - qemu-kvm
-      - libvirt-bin
+      - libvirt-clients
+      - libvirt-daemon-system
       - bridge-utils
       - virt-manager
+
