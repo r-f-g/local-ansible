@@ -8,4 +8,5 @@
     remote: flathub
   loop:
     - org.keepassxc.KeePassXC
+    - org.remmina.Remmina
 

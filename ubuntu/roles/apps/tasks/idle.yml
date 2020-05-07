@@ -17,3 +17,10 @@
   notify:
     - Install JetBrains Toolbox
 
+- name: Set Jetbrains-Toolbox as desktop app
+  template:
+    src: jetbrains-toolbox.desktop
+    dest: /home/{{ ansible_ssh_user }}/.local/share/applications
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    mode: "0664"
