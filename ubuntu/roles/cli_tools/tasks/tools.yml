@@ -17,3 +17,4 @@
       - clang
       - cmake
       - tree
+      - net-tools
