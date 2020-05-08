@@ -16,6 +16,15 @@
     repo: "git://github.com/robbyrussell/oh-my-zsh.git"
     dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh"
 
+
+- name: Change oh-my-zsh directory ownership
+  file:
+    path: "/home/{{ ansible_ssh_user }}/.oh-my-zsh/"
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    state: directory
+    recurse: yes
+
 - name: Create new zsh config from the template in the oh-my-zsh repo
   become: no
   copy:
