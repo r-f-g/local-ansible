@@ -18,3 +18,12 @@
       - cmake
       - tree
       - net-tools
+      - pbcopy
+      - xclip
+      - git
+      - bzr
+      - git-review
+      - byobu
+      - nethogs
+      - nload
+      - iptraf
