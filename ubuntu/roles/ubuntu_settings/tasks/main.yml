@@ -7,24 +7,39 @@
     owner: root
     group: root
 
-- name: Delete automatic updaters # Can't be helped..
+- name: Delete Gnome automatic updaters
   apt:
     name:
       - gnome-software
-      - unattended-upgrades
     state: absent
 
 - name: Delete other Ubuntu bullshit
   apt:
     name:
-      - ubuntu-web-launchers # some amazon bullshit
-      - ubuntu-report # telemetry
+      - ubuntu-web-launchers  # some amazon bullshit
+      - ubuntu-report  # telemetry
     state: absent
+
+- name: Secure my device
+  apt:
+    name:
+      - sosreport
+      - apparmor-utils
+      - apparmor-profiles
+      - unattended-upgrades  # automatic updates
 
 - name: Configure APT auto updates
   copy:
     src: 20auto-upgrades
     dest: /etc/apt/apt.conf.d/20auto-upgrades
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Configure unattended-upgrades auto updates
+  copy:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
     mode: "0644"
     owner: root
     group: root
