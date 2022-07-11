@@ -1,0 +1,10 @@
+---
+- name: Install charmcraft
+  snap:
+    name: charmcraft
+    classic: yes
+
+- name: Install charm
+  snap:
+    name: charm
+    classic: yes

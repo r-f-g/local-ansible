@@ -4,3 +4,6 @@
 
 - name: ZSH
   import_tasks: zsh.yml
+
+- name: lvim
+  import_tasks: vim.yml

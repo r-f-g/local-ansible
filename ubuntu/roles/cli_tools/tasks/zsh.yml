@@ -11,23 +11,36 @@
     name: "{{ ansible_ssh_user }}"
     shell: /bin/zsh
 
-- name: Clone oh-my-zsh repo
-  git:
-    repo: "git://github.com/robbyrussell/oh-my-zsh.git"
-    dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh"
-
-
-- name: Change oh-my-zsh directory ownership
-  file:
+- name: Check if oh-my-zsh exists
+  stat:
     path: "/home/{{ ansible_ssh_user }}/.oh-my-zsh/"
-    owner: "{{ ansible_ssh_user }}"
-    group: "{{ ansible_ssh_user }}"
-    state: directory
-    recurse: yes
+  register: ohmyzsh_installed
 
-- name: Create new zsh config from the template in the oh-my-zsh repo
+- name: Download install.sh for oh-my-zsh
+  become: no
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "/tmp/ohmyzsh-install.sh"
+    mode: "755"
+  when: not ohmyzsh_installed.stat.exists
+
+- name: Install oh-my-zsh
+  become: no
+  shell:
+    cmd: "/tmp/ohmyzsh-install.sh"
+    stdin: "y"
+  when: not ohmyzsh_installed.stat.exists
+
+- name: Copy r4g-robbyrussel theme
   become: no
   copy:
-    src: zsh.conf
+    src: r4g-robbyrussel.zsh-theme
+    dest: "/home/{{ ansible_ssh_user }}/.oh-my-zsh/themes/r4g-robbyrussell.zsh-theme"
+    backup: yes
+
+- name: Create new zsh config from the template
+  become: no
+  template:
+    src: zsh.conf.j2
     dest: "/home/{{ ansible_ssh_user }}/.zshrc"
     backup: yes

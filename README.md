@@ -2,7 +2,14 @@
 
 ## Prerequisite
 
-You need install ansible. **Recommended** you should use provide Pipenv.
+You need install all requirements. The **recommended** way is to install it in
+a virtualenv.
+
+```bash
+virtualenv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## How run
 
@@ -10,10 +17,10 @@ If you want run this ansible locally you can use default playbook, if you want i
 
 **ClearLinux**
 ```bash
-pipenv run ansible-playbook clear_linux/playbook.yml -K -u $USER
+ansible-playbook clear_linux/playbook.yml -K -u $USER
 ```
 
 **Ubuntu**
 ```bash
-pipenv run ansible-playbook ubuntu/playbook.yml -i ubuntu/inventory.yml -K -u $USER
+`ansible-playbook ubuntu/playbook.yml -i ubuntu/inventory.yml -K -u $USER`
 ```

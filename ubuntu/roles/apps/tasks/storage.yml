@@ -1,12 +1,4 @@
 ---
-- name: Install OpenDrive and Dropbox
-  become: no
-  flatpak:
-    state: present
-    method: user
-    name: "{{ item }}"
-    remote: flathub
-  loop:
-    - com.dropbox.Client
-    - io.github.liberodark.OpenDrive
-
+- name: Install Dropbpx
+  apt:
+    deb: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb

@@ -3,6 +3,6 @@
   apt:
     name:
       - dconf-editor
-      - gnome-tweak-tool
+      - gnome-tweaks
   become: yes
 

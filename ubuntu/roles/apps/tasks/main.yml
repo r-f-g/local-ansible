@@ -1,25 +1,27 @@
 ---
-- name: Docker
-  import_tasks: docker.yml
+- name: Install backup tools
+  import_tasks: backup.yml
 
-- name: Virtualization
-  import_tasks: virtualization.yml
+- name: Install Browser
+  import_tasks: browser.yml
 
-- name: Cloud tools
+- name: Install tool for charming development
+  import_tasks: charming_development.yml
+
+- name: Install clouds tools
   import_tasks: cloud_tools.yml
 
-- name: Preparation
-  import_tasks: prep.yml
-
-- name: Communication
+- name: Install apps for communications
   import_tasks: communication.yml
 
-- name: Cloud storage
+- name: Install IDEs
+  import_tasks: ide.yml
+
+- name: Install clouds storages app
   import_tasks: storage.yml
 
-- name: IDLE
-  import_tasks: idle.yml
+- name: Install VMs and container tools
+  import_tasks: virtualization.yml
 
-- name: Others
+- name: Install others apps
   import_tasks: others.yml
-

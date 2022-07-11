@@ -1,5 +1,5 @@
 ---
-- name: Install CLI utilities for better life
+- name: Install CLI utilities
   apt:
     name:
       - htop
@@ -16,9 +16,9 @@
       - wget
       - clang
       - cmake
+      - make
       - tree
       - net-tools
-      - pbcopy
       - xclip
       - git
       - bzr
@@ -27,3 +27,5 @@
       - nethogs
       - nload
       - iptraf
+      - tox
+      - virtualenv
