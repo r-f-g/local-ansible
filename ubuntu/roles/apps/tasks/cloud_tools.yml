@@ -1,18 +1,19 @@
 ---
-- name: Add Google Cloud GPG key
-  apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    state: present
+- name: Install Juju
+  snap:
+    name: juju
+    classic: yes
 
-- name: Add Google Cloud repository
-  apt_repository:
-    repo: "deb http://packages.cloud.google.com/apt cloud-sdk main"
-    state: present
-    filename: google-cloud-sdk
-    update_cache: yes
+- name: Install kubectl
+  snap:
+    name: kubectl
+    classic: yes
 
-- name: Install gcloud, gsutil and kubectl
-  apt:
-    name:
-      - google-cloud-sdk
-      - kubectl
+- name: Install google-cloud utils
+  snap:
+    name: google-cloud-sdk
+    classic: yes
+
+- name: Install Remmina
+  snap:
+    name: remmina

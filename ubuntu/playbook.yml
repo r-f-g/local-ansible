@@ -1,19 +1,19 @@
 ---
 - hosts: local_pc
   become: yes
+  vars_prompt:
+    name: machine_name
+    prompt: What is your machine name? (used in zsh theme)
+    private: no
   become_method: sudo
   roles:
     - prep # Install required packages.
     - updated_system # Update the whole system before installing anything else
-    - apps
-    - python
     - cli_tools
     - ubuntu_settings
+    - apps
 
 - hosts: local_pc
-  vars:
-    jetbrains_toolbox_version: latest
   become: no
   roles:
-    - user_python
     - ubuntu_user_settings

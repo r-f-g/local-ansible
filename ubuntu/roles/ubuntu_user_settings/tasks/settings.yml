@@ -64,8 +64,3 @@
     key: "/org/gnome/desktop/privacy/hide-identity"
     value: "true"
     state: "present"
-
-- name: Remove examples.desktop (wtf?)
-  file:
-    path: ~/examples.desktop
-    state: absent

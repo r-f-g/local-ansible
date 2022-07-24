@@ -1,13 +1,12 @@
 ---
-- name: Install Slack, Thunderbird and Telegram
-  become: no
-  flatpak:
-    state: present
-    method: user
-    name: "{{ item }}"
-    remote: flathub
-  loop:
-    - com.slack.Slack
-    - org.mozilla.Thunderbird
-    - org.telegram.desktop
+- name: Install Mattermost
+  snap:
+    name: mattermost-desktop
 
+- name: Install Telegram
+  snap:
+    name: telegram-desktop
+
+- name: Install Signal
+  snap:
+    name: signal-desktop

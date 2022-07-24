@@ -1,4 +1,0 @@
----
-- name: Install JetBrains Toolbox
-  shell: "/home/{{ ansible_ssh_user }}/.jetbrains-toolbox/jetbrains-toolbox.sh"
-

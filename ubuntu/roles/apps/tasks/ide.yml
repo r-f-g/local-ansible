@@ -1,0 +1,10 @@
+---
+- name: Install sublime-text
+  snap:
+    name: sublime-text
+    classic: yes
+
+- name: Install PyCharm-professional
+  snap:
+    name: pycharm-professional
+    classic: yes

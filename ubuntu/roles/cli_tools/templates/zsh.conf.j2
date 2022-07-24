@@ -1,0 +1,17 @@
+# r4g zshrc
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="r4g-robbyrussell"
+plugins=(git timer)
+R4G_MACHINE="{{ machine_name }}"
+TIMER_FORMAT="[%d]"
+TIMER_PRECISION=2
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH="$HOME/.local/bin:$PATH"
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias -s {yml,yaml,md,rst,txt,ini,toml,conf,cnf}=vim
+alias timev='/usr/bin/time -v'

@@ -1,0 +1,9 @@
+---
+- name: Install TimeShift
+  apt:
+    name: timeshift
+
+- name: Install deja-dup
+  snap:
+    name: deja-dup
+    classic: yes

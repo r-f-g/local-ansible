@@ -1,12 +1,4 @@
 ---
-- name: Install other usefull app
-  become: no
-  flatpak:
-    state: present
-    method: user
-    name: "{{ item }}"
-    remote: flathub
-  loop:
-    - org.keepassxc.KeePassXC
-    - org.remmina.Remmina
-
+- name: Install KeepassXC
+  snap:
+    name: keepassxc
