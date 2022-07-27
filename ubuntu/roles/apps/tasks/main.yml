@@ -25,3 +25,7 @@
 
 - name: Install others apps
   import_tasks: others.yml
+
+- name: Install eMail client
+  import_tasks: email.yml
+
