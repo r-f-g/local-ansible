@@ -7,20 +7,3 @@
   snap:
     name: lxd
 
-- name: Install Docker
-  snap:
-    name: docker
-
-- name: Ensure group "docker" exists
-  group:
-    name: docker
-    state: present
-
-- name: Add user to docker group
-  user:
-    state: present
-    name: "{{ ansible_ssh_user }}"
-    group: "{{ ansible_ssh_user }}"
-    groups: docker
-    append: yes
-  become: yes
