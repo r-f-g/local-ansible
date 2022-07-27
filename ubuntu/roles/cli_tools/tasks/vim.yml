@@ -6,14 +6,35 @@
 
 - name: Download JetBrainsMono Nerd Font
   become: no
-  get_url:
-    url: https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh
-    dest: "/tmp/jetbrains-font-installer.sh"
-    mode: "755"
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+    dest: "/home/{{ ansible_ssh_user }}/.local/share/fonts/fonts/ttf"
+    remote_src: yes
 
-- name: Install JetBrainsMono Nerd Font
+- name: Update fonts
+  command: fc-cache -fv
+
+- name: Get list of profiles in gnome terminal
   become: no
-  shell: /tmp/jetbrains-font-installer.sh
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/list"
+    state: read
+  register: terminal_profiles
+
+- name: Set JetBrainsMono font for each profile
+  become: no
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ item | string }}/use-system-font"
+    value: "false"
+  loop: "{{ terminal_profiles.value }}"
+
+
+- name: Set JetBrainsMono font for each profile
+  become: no
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:{{ item | string }}/font"
+    value: "'JetBrainsMono Nerd Font 11'"
+  loop: "{{ terminal_profiles.value }}"
 
 - name: Install AstroNvim dependencies
   apt:
