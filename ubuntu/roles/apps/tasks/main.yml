@@ -5,8 +5,11 @@
 - name: Install Browser
   import_tasks: browser.yml
 
-- name: Install tool for charming development
-  import_tasks: charming_development.yml
+- name: Install tools for charming development
+  import_tasks: charm_development.yml
+
+- name: Install tools for snaping development
+  import_tasks: snap_development.yml
 
 - name: Install clouds tools
   import_tasks: cloud_tools.yml
