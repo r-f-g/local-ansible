@@ -1,0 +1,6 @@
+---
+- name: Install Sanpscraft
+  snap:
+    name: snapcraft
+    classic: yes
+
