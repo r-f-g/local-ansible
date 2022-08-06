@@ -4,38 +4,6 @@
     name: nvim
     classic: yes
 
-- name: Download JetBrainsMono Nerd Font
-  become: no
-  unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
-    dest: "/home/{{ ansible_ssh_user }}/.local/share/fonts/fonts/ttf"
-    remote_src: yes
-
-- name: Update fonts
-  command: fc-cache -fv
-
-- name: Get list of profiles in gnome terminal
-  become: no
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/list"
-    state: read
-  register: terminal_profiles
-
-- name: Set JetBrainsMono font for each profile
-  become: no
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/:{{ item | string }}/use-system-font"
-    value: "false"
-  loop: "{{ terminal_profiles.value }}"
-
-
-- name: Set JetBrainsMono font for each profile
-  become: no
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/:{{ item | string }}/font"
-    value: "'JetBrainsMono Nerd Font 11'"
-  loop: "{{ terminal_profiles.value }}"
-
 - name: Install AstroNvim dependencies
   apt:
     name:
@@ -56,9 +24,18 @@
 - name: Copy AstroNvim config
   become: no
   copy:
-    src: "/tmp/astronvim"
-    dest: "/home/{{ ansible_ssh_user }}/.config/nvim"
+    src: "/tmp/astronvim/"
+    dest: "/home/{{ ansible_ssh_user }}/.config/nvim/"
+    remote_src: yes
     backup: yes
+
+- name: Change `.local/share/nvim/site` ownership to ansible user
+  file:
+    path: "/home/{{ ansible_ssh_user }}/.local/share/nvim/site"
+    state: directory
+    recurse: yes
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
 
 - name: Run nvim PackerSync
   become: no

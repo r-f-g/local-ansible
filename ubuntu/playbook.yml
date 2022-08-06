@@ -9,8 +9,8 @@
   roles:
     - prep # Install required packages.
     - updated_system # Update the whole system before installing anything else
-    - cli_tools
     - ubuntu_settings
+    - cli_tools
     - apps
 
 - hosts: local_pc

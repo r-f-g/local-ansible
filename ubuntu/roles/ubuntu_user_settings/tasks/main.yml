@@ -4,3 +4,6 @@
 
 - name: User settings
   import_tasks: settings.yml
+
+- name: User vim and terminal settings
+  import_tasks: vim.yml
