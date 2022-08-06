@@ -70,17 +70,23 @@
     key: "/org/gnome/desktop/interface/color-scheme"
     value: "'prefer-dark'"
 
-- name: "Add firefox keyboard shortcut binding"
+- name: Add firefox keyboard shortcut binding
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
     value: "'<Primary><Alt>f'"
 
-- name: "Add firefox keyboard shortcut command"
+- name: Add firefox keyboard shortcut command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
     value: "'firefox -p'"
 
-- name: "Add firefox keyboard shortcut name"
+- name: Add firefox keyboard shortcut name
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
     value: "'firefox'"
+
+- name: Disable home icone in desktop
+  dconf:
+    key: "/org/gnome/shell/extensions/ding/show-home"
+    value: "false"
+
