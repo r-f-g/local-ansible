@@ -1,0 +1,20 @@
+---
+- name: Change dock position to bottom
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
+    value: "'BOTTOM'"
+
+- name: Disable fixed dock
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
+    value: "false"
+
+- name: Change icon size in dock
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: 18
+
+- name: Configure favorite apps in dock
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['firefox_firefox.desktop', 'chromium_chromium.desktop', 'org.gnome.Evolution.desktop', 'mattermost-desktop_mattermost-desktop.desktop', 'pycharm-professional_pycharm-professional.desktop', 'sublime-text_subl.desktop', 'keepassxc_keepassxc.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"

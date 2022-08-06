@@ -1,0 +1,53 @@
+---
+- name: Lock user after lid is closed on AC
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/lid-close-ac-action"
+    value: "'nothing'"
+
+- name: Lock user after lid is closed on Battery
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/lid-close-battery-action"
+    value: "'nothing'"
+
+- name: Suspend with power button
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/power-button-action"
+    value: "'suspend'"
+
+- name: Enable power saver profile on low battery
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/power-saver-profile-on-low-battery"
+    value: "true"
+
+- name: Set inactive timeout on AC
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout"
+    value: "1800"  # 30 min
+
+- name: Set inactive action on AC
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"
+    value: "'suspend'"
+
+- name: Set inactive timeout on battery
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout"
+    value: "1200"  # 20 min
+
+- name: Set inactive action on battery
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-type"
+    value: "'suspend'"
+
+- name: Configure lid close to nothing in logind.conf
+  become: yes
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: '^HandleLidSwitch='
+    insertafter: '^#HandleLidSwitch='
+    line: 'HandleLidSwitch=ignore'
+
+- name: Enable battery percentage
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    value: "true"

@@ -16,4 +16,5 @@
 - hosts: local_pc
   become: no
   roles:
-    - ubuntu_user_settings
+    - role: ubuntu_user_settings
+      tags: user-settings
