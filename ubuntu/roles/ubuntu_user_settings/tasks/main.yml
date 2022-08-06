@@ -4,3 +4,12 @@
 
 - name: User settings
   import_tasks: settings.yml
+
+- name: User vim and terminal settings
+  import_tasks: vim.yml
+
+- name: Configure power settings
+  import_tasks: power.yml
+
+- name: Dock configuration
+  import_tasks: dock.yml

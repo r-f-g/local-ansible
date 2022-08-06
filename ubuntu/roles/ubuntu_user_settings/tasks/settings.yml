@@ -64,3 +64,23 @@
     key: "/org/gnome/desktop/privacy/hide-identity"
     value: "true"
     state: "present"
+
+- name: Change to dark theme
+  dconf:
+    key: "/org/gnome/desktop/interface/color-scheme"
+    value: "'prefer-dark'"
+
+- name: "Add firefox keyboard shortcut binding"
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    value: "'<Primary><Alt>f'"
+
+- name: "Add firefox keyboard shortcut command"
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    value: "'firefox -p'"
+
+- name: "Add firefox keyboard shortcut name"
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    value: "'firefox'"

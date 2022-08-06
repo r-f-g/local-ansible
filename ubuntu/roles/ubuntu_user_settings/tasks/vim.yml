@@ -1,0 +1,34 @@
+---
+- name: Make font directory
+  file:
+    path: "/home/{{ ansible_ssh_user }}/.local/share/fonts/ttf"
+    state: directory
+    recurse: yes
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    mode: '0755'
+
+- name: Download JetBrainsMono Nerd Font
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+    dest: "/home/{{ ansible_ssh_user }}/.local/share/fonts/ttf"
+    remote_src: yes
+
+- name: Update fonts
+  command: fc-cache -fv
+
+- name: Disable system font for default profile
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font"
+    value: "false"
+
+- name: Set JetBrainsMono font for default profile
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font"
+    value: "'JetBrainsMono Nerd Font 11'"
+
+- name: Set visible name for default profile
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/visible-name"
+    value: "'{{ ansible_ssh_user }}'"
+
